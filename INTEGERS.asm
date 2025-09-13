@@ -13,7 +13,7 @@ START:
     mov ax, @data
     mov ds, ax
 
-    ; --- Сума елементів масиву ---
+    
     mov cx, [n]
     xor si, si
     xor ax, ax
@@ -24,7 +24,7 @@ sum_loop:
     loop sum_loop
     mov [sum], ax
 
-    ; --- Різниця: arr[0] - arr[1] - arr[2] - ... ---
+   
     mov ax, [arr]
     mov cx, [n]
     dec cx

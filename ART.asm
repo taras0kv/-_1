@@ -13,19 +13,19 @@ start:
     mov ax, @data
     mov ds, ax
 
-    mov cx, 0C470h        ; лічильник циклу
-    mov ax, 12h           ; режим 640x480x16 VGA
+    mov cx, 0C470h        
+    mov ax, 12h           
     int 10h
 
-    finit                 ; ініціалізація FPU
-    fldz                  ; ST(0) = 0
+    finit                 
+    fldz                  
     mov ah, 0Ch
     xor bx, bx
 
 l1:
-    fld st                ; копія кута
-    fld st                ; ще копія
-    fsincos               ; ST(0)=cos, ST(1)=sin, ST(2)=кут
+    fld st               
+    fld st                
+    fsincos               
     fmul divK
     fmul st, st(2)
     fistp word ptr xr

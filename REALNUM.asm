@@ -14,19 +14,19 @@ START:
     mov ds, ax
 
     mov cx, [N]
-    finit             ; ініціалізація FPU
+    finit             
     xor si, si
-    fldz              ; ST(0) = 0.0 — початкова сума
+    fldz              
 
 loop_fpu:
-    fld DWORD PTR [X + si]   ; завантажити X[i]
-    fld DWORD PTR [Y + si]   ; завантажити Y[i]
-    fmulp st(1), st(0)       ; X*Y
-    faddp st(1), st(0)       ; додати до суми
-    add si, 4                ; REAL4 = 4 байти
+    fld DWORD PTR [X + si]   
+    fld DWORD PTR [Y + si]   
+    fmulp st(1), st(0)       
+    faddp st(1), st(0)       
+    add si, 4                
     loop loop_fpu
 
-    fstp DWORD PTR [SUM]     ; записати результат у SUM
+    fstp DWORD PTR [SUM]     
 
 Exit:
     mov ah, 4Ch
